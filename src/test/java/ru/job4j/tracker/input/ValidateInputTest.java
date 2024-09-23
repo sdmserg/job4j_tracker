@@ -38,10 +38,16 @@ class ValidateInputTest {
         int[] numbers = {5, 7, 9, 11, 27};
         Input in = new MockInput(values);
         ValidateInput input = new ValidateInput(output, in);
-        for (int index = 0; index < values.length; index++) {
-            int selected = input.askInt("Enter menu:");
-            assertThat(selected).isEqualTo(numbers[index]);
-        }
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(5);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(7);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(9);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(11);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(27);
     }
 
     @Test
