@@ -47,15 +47,12 @@ public class AnalyzeByMap {
 
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> labels = new ArrayList<>();
-        Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            String pupilName = pupil.name();
+            int pupilScore = 0;
             for (Subject subject : pupil.subjects()) {
-                map.put(pupilName, subject.score() + map.getOrDefault(pupilName, 0));
+                pupilScore += subject.score();
             }
-        }
-        for (String pupilName : map.keySet()) {
-            labels.add(new Label(pupilName, map.get(pupilName)));
+            labels.add(new Label(pupil.name(), pupilScore));
         }
         labels.sort(Comparator.naturalOrder());
         return labels.get(labels.size() - 1);
