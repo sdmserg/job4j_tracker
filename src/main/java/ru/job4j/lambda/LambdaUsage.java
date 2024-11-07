@@ -8,8 +8,8 @@ public class LambdaUsage {
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("eeeee", "a",  "ccc", "dddd", "bb");
         Comparator<String> comparator = (left, right) -> {
-            System.out.println("Compare strings: " + right + "(length: " + right.length()
-                    + ")" + " - " + left + "(length: " + left.length() + ")");
+            System.out.println("Compare strings: " + left + "(length: " + left.length()
+                    + ")" + " - " + right + "(length: " + right.length() + ")");
             return Integer.compare(right.length(), left.length());
         };
         strings.sort(comparator);
