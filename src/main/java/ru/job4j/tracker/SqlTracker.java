@@ -21,6 +21,10 @@ public class SqlTracker implements Store {
         init();
     }
 
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
+
     private void init() {
         try (InputStream input = SqlTracker.class.getClassLoader().
                 getResourceAsStream("db/liquibase.properties")) {
