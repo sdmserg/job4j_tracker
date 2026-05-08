@@ -1,10 +1,14 @@
 package ru.job4j.tracker;
 
-import java.util.Objects;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+@Data
+@NoArgsConstructor
 public class Item {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
@@ -13,10 +17,8 @@ public class Item {
 
     private String name;
 
+    @EqualsAndHashCode.Exclude
     private LocalDateTime created = LocalDateTime.now().withNano(0);
-
-    public Item() {
-    }
 
     public Item(String name) {
         this.name = name;
@@ -33,26 +35,6 @@ public class Item {
         return item;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
     @Override
     public String toString() {
         return "Item{"
@@ -60,22 +42,5 @@ public class Item {
                 + ", name='" + name + '\''
                  + ", created=" + created.format(FORMATTER)
                 + '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null | getClass() != o.getClass()) {
-            return false;
-        }
-        Item item = (Item) o;
-        return id == item.getId() && name.equals(item.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
     }
 }
