@@ -4,15 +4,20 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "items")
 @Data
 @NoArgsConstructor
 public class Item {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
