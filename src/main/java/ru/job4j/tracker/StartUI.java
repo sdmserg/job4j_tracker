@@ -40,7 +40,7 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        try (Store tracker = new MemTracker()) {
+        try (Store tracker = new HbmTracker()) {
             List<UserAction> actions = List.of(
                     new CreateAction(output),
                     new FindAllAction(output),
